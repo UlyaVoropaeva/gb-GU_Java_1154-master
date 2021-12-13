@@ -47,7 +47,6 @@ public class ProductCategoryService {
         } catch (NoSuchElementException e) {
             throw new EntityNotFoundException("category entity no found by id: " + category.getId(), e);
         }
-
     }
 
     public boolean saveOrUpdate(Long categoryId) {

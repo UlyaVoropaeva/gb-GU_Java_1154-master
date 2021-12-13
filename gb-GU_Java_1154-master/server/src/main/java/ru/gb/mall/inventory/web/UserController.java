@@ -41,7 +41,7 @@ public class UserController {
     public ResponseEntity<?> saveOrUpdateUser (@PathVariable("id") Long id) {
 
         return userService.saveOrUpdate(id)
-                ? new ResponseEntity<>(HttpStatus.OK)
+                ? new ResponseEntity<>(HttpStatus.CREATED)
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
@@ -61,11 +61,19 @@ public class UserController {
 
 
     @PostMapping("/registration")
-    public ResponseEntity<?> createNewUser(User user) {
+    public ResponseEntity<?> registrationNewUser(@RequestBody User user) {
 
-        return (userService.findByEmail(user.getUsersAccess().getEmail()))
+            return  userService.registrationNewUser(user)
+                    ? new ResponseEntity<>(HttpStatus.CREATED)
+                    : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> userLogin(@RequestBody User user) {
+
+        return userService.userLogin(user)
                 ? new ResponseEntity<>(HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
-
     }
 }

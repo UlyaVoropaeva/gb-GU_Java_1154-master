@@ -76,8 +76,8 @@ public class SpringSecurityConfig /* extends WebSecurityConfigurerAdapter */ {
         auth.inMemoryAuthentication()
                 .withUser(adminUsername).password(adminPassword).roles("ADMIN");
     }
-
- //   @Bean
+/*
+    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }

@@ -7,5 +7,5 @@ import ru.gb.mall.inventory.entity.UsersAccess;
 import java.util.Optional;
 
 public interface UsersAccessRepository extends PagingAndSortingRepository <UsersAccess, Long> {
-   UsersAccess findByEmail(@Param("email") String email);
+   Optional<UsersAccess> findByEmail(@Param("email") String email);
 }

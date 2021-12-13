@@ -42,14 +42,14 @@ public class ProductController {
     public ResponseEntity<?> saveOrUpdateProduct (@PathVariable("id") Long id) {
 
         return productService.saveOrUpdate(id)
-                ? new ResponseEntity<>(HttpStatus.OK)
+                ? new ResponseEntity<>(HttpStatus.CREATED)
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
     @PostMapping("/updatePrice/{id}")
     public ResponseEntity<?> saveOrUpdatePrice(@PathVariable("id") Long id, @RequestBody ProductPrice price){
         return productService.saveOrUpdatePrice(id, price)
-                ? new ResponseEntity<>(HttpStatus.OK)
+                ? new ResponseEntity<>(HttpStatus.CREATED)
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 
@@ -61,11 +61,10 @@ public class ProductController {
                 : new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-
     @PostMapping("/updateDiscount/{id}")
     public ResponseEntity<?> saveOrUpdateDiscount (@PathVariable("id") Long id, @RequestBody ProductDiscount discount){
         return  productService.saveOrUpdateDiscount(id, discount)
-                ? new ResponseEntity<>(HttpStatus.OK)
+                ? new ResponseEntity<>(HttpStatus.CREATED)
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 

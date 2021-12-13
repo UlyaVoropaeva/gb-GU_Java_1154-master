@@ -14,5 +14,4 @@ public class GlobalRestExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<ApiError> handleNotFound(EntityNotFoundException ex) {
         return new ResponseEntity<>(new ApiError(ex.getMessage()), HttpStatus.NOT_FOUND);
     }
-
 }

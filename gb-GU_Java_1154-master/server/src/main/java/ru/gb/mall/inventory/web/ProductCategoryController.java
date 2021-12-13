@@ -43,7 +43,7 @@ public class ProductCategoryController {
         final boolean saveOrUpdate = categoryService.saveOrUpdate(id);
 
         return saveOrUpdate
-                ? new ResponseEntity<>(HttpStatus.OK)
+                ? new ResponseEntity<>(HttpStatus.CREATED)
                 : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
 

@@ -41,7 +41,6 @@ public class RoleService {
     }
 
     public void saveOrUpdate(UsersRole role) {
-
         try {
             roleRepository.save(role);
         } catch (NoSuchElementException e) {

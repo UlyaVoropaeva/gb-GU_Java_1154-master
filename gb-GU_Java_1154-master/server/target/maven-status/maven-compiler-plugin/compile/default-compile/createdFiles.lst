@@ -1,0 +1,17 @@
+ru\gb\mall\inventory\repository\ProductRepository.class
+ru\gb\mall\inventory\web\ApiError.class
+ru\gb\mall\inventory\exception\EntityNotFoundException.class
+ru\gb\mall\configuration\MyAccessDeniedHandler.class
+ru\gb\mall\inventory\entity\ProductCategory.class
+ru\gb\mall\inventory\entity\User.class
+ru\gb\mall\configuration\CustomAccessDeniedHandler.class
+ru\gb\mall\inventory\entity\Product.class
+ru\gb\mall\configuration\SpringSecurityConfig.class
+ru\gb\mall\inventory\entity\ProductPrice.class
+ru\gb\mall\inventory\web\ProductController.class
+ru\gb\mall\inventory\web\GlobalRestExceptionHandler.class
+ru\gb\mall\inventory\entity\ProductDiscount.class
+ru\gb\mall\inventory\MallInventoryApplication.class
+ru\gb\mall\inventory\entity\UsersAccess.class
+ru\gb\mall\inventory\entity\UsersRole.class
+ru\gb\mall\inventory\service\ProductService.class
