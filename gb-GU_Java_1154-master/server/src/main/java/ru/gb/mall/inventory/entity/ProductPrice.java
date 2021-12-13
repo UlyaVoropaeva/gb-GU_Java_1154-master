@@ -15,8 +15,7 @@ import javax.persistence.Table;
 @Data
 public class ProductPrice {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_idGenerator")
-    @SequenceGenerator(name = "seq_idGenerator", sequenceName = "seq_productPriceId", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private long id;
 

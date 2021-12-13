@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Component
-public class CustomAccessDeniedHandler implements AccessDeniedHandler {
-
+//@Component
+public class CustomAccessDeniedHandler /* implements AccessDeniedHandler*/ {
+/*
     private static Logger LOG = LoggerFactory.getLogger(MyAccessDeniedHandler.class);
 
     @Override
@@ -34,5 +34,5 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
         response.sendRedirect(request.getContextPath() + "/accessDenied");
     }
-
+*/
 }

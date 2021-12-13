@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Component
-public class MyAccessDeniedHandler implements AccessDeniedHandler {
+//@Component
+public class MyAccessDeniedHandler //implements AccessDeniedHandler
+ {
 
-    private static Logger logger = LoggerFactory.getLogger(MyAccessDeniedHandler.class);
+  /*  private static Logger logger = LoggerFactory.getLogger(MyAccessDeniedHandler.class);
 
     @Override
     public void handle(HttpServletRequest httpServletRequest,
@@ -33,5 +34,5 @@ public class MyAccessDeniedHandler implements AccessDeniedHandler {
         httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/403");
 
     }
-
+*/
 }

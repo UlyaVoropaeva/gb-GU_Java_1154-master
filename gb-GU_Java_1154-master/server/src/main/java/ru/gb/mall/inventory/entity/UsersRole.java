@@ -11,12 +11,11 @@ import java.util.Collection;
 public class UsersRole {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_idGenerator")
-    @SequenceGenerator(name = "seq_idGenerator", sequenceName = "seq_roleId", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "role_id")
     private Long id;
 
-    @Column(name = "role", unique = true, columnDefinition = "VARCHAR", length = 50)
+    @Column(name = "role", unique = true,  length = 50)
     private String role;
 
 }
