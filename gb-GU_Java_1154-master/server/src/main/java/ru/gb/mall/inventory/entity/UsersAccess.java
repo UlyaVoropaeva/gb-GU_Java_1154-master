@@ -1,10 +1,8 @@
 package ru.gb.mall.inventory.entity;
 
-
-import io.quarkus.security.jpa.Password;
-import io.quarkus.security.jpa.PasswordType;
 import io.quarkus.security.jpa.Username;
 import lombok.Data;
+import org.wildfly.security.password.Password;
 
 import javax.persistence.*;
 
@@ -14,16 +12,14 @@ import javax.persistence.*;
 public class UsersAccess {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_idGenerator")
-    @SequenceGenerator(name = "seq_idGenerator", sequenceName = "seq_productId", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private long id;
 
-    @Column(name = "email", unique = true, nullable = false, columnDefinition = "VARCHAR", length = 100)
+    @Column(name = "email", unique = true, nullable = false, length = 100)
     @Username
     private String email;
 
     @Column(name = "password", nullable = false )
-    @Password(value = PasswordType.CUSTOM)
-    private String password;
+    private Password password;
 }

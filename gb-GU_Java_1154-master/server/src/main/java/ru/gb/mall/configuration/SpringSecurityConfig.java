@@ -14,10 +14,10 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 
 import javax.sql.DataSource;
 
-@Configuration
-@EnableWebSecurity
-public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
-
+//@Configuration
+//@EnableWebSecurity
+public class SpringSecurityConfig /* extends WebSecurityConfigurerAdapter */ {
+/*
     private final AccessDeniedHandler accessDeniedHandler;
 
     final DataSource dataSource;
@@ -34,13 +34,13 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
-    @Autowired
+   // @Autowired
     public SpringSecurityConfig(AccessDeniedHandler accessDeniedHandler, DataSource dataSource) {
         this.accessDeniedHandler = accessDeniedHandler;
         this.dataSource = dataSource;
     }
 
-    @Override
+  //  @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable()
@@ -61,7 +61,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().headers().frameOptions().disable();
     }
 
-    @Autowired
+   // @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
         // Database authentication
@@ -76,14 +76,14 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser(adminUsername).password(adminPassword).roles("ADMIN");
     }
-
+/*
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+  //  @Bean
     public AccessDeniedHandler accessDeniedHandler(){
         return new CustomAccessDeniedHandler();
-    }
+    }*/
 }
