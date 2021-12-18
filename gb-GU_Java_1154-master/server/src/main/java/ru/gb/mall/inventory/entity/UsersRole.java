@@ -18,5 +18,4 @@ public class UsersRole {
 
     @Column(name = "role", unique = true, columnDefinition = "VARCHAR", length = 50)
     private String role;
-
 }

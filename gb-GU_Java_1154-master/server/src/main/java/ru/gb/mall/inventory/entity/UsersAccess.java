@@ -25,5 +25,5 @@ public class UsersAccess {
 
     @Column(name = "password", nullable = false )
     @Password(value = PasswordType.CUSTOM)
-    private String password;
+    private Password password;
 }

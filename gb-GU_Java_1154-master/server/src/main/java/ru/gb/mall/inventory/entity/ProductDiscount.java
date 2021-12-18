@@ -23,4 +23,3 @@ public class ProductDiscount {
     @Column(name = "ORIGINAL_VALUE", nullable = false)
     private double originalValue;
 }
-

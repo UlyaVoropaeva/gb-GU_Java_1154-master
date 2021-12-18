@@ -8,4 +8,9 @@ public class MallInventoryApplication {
     public static void main(String[] args) {
         SpringApplication.run(MallInventoryApplication.class, args);
     }
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
