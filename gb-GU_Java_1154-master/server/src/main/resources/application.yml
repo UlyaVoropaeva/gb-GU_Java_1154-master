@@ -19,3 +19,17 @@ spring:
     jpa:
      repositories:
        enabled: true
+database:
+  secret: B77=m7$BzwgrAxTb
+
+  mail:
+    host: smtp.google.com
+    port: 587
+    username: <changeit>
+    password: <changeit>
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
