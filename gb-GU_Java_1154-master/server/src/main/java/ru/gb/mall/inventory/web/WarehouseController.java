@@ -1,5 +1,6 @@
 package ru.gb.mall.inventory.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.gb.mall.inventory.entity.Warehouse;
 import ru.gb.mall.inventory.entity.WarehouseItem;
+import ru.gb.mall.inventory.mail.EmailServiceImpl;
 import ru.gb.mall.inventory.service.WarehouseService;
 
 import java.net.URI;
@@ -17,6 +19,9 @@ import java.util.List;
 public class WarehouseController {
 
     private final WarehouseService warehouseService;
+
+    @Autowired
+    public EmailServiceImpl emailService;
 
     public WarehouseController(WarehouseService warehouseService) {
         this.warehouseService = warehouseService;
@@ -62,7 +67,7 @@ public class WarehouseController {
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/sendSimpleEmail/{id}")
     public ResponseEntity<?> writeOffProductFromWarehouse(
             @PathVariable("id") long warehouseId,
             @RequestBody WarehouseItem shipmentItem) {
@@ -71,4 +76,8 @@ public class WarehouseController {
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+
+
+
+
 }

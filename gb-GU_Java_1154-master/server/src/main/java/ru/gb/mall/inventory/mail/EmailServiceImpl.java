@@ -1,23 +1,29 @@
-package mail;
+package ru.gb.mall.inventory.mail;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.mail.MailException;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Component;
 import ru.gb.mall.inventory.mail.message.AttachmentMailMessage;
 import ru.gb.mall.inventory.mail.message.EmailMessage;
+import org.springframework.stereotype.Component;
+import org.springframework.mail.MailException;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
+
+
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+
+
 
 @Component
 @Slf4j
 public class EmailServiceImpl implements EmailService {
 
+    private static final String NOREPLY_ADDRESS = "Username@gmail.com";
+
     private final JavaMailSenderImpl sender;
+
 
     public EmailServiceImpl(JavaMailSenderImpl sender) {
         this.sender = sender;
@@ -28,7 +34,7 @@ public class EmailServiceImpl implements EmailService {
         log.info("Preparing mail message to be sent.");
 
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-        simpleMailMessage.setFrom(message.from());
+        simpleMailMessage.setFrom(NOREPLY_ADDRESS);
         simpleMailMessage.setTo(message.to());
         simpleMailMessage.setSubject(message.subject());
         simpleMailMessage.setText(message.text());
@@ -50,7 +56,7 @@ public class EmailServiceImpl implements EmailService {
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
 
         try {
-            helper.setFrom(message.from());
+            helper.setFrom(NOREPLY_ADDRESS);
             helper.setTo(message.to());
             helper.setSubject(message.subject());
             helper.setText(message.text());
@@ -68,4 +74,5 @@ public class EmailServiceImpl implements EmailService {
         }
 
     }
+
 }

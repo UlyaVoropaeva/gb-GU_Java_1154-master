@@ -1,5 +1,7 @@
 package ru.gb.mall.inventory.service;
 
+import ru.gb.mall.inventory.mail.EmailServiceImpl;
+import ru.gb.mall.inventory.mail.message.EmailMessage;
 import org.springframework.stereotype.Service;
 import ru.gb.mall.inventory.entity.Product;
 import ru.gb.mall.inventory.entity.Warehouse;
@@ -23,15 +25,19 @@ public class WarehouseService {
     private final WarehouseKeeperRepository keeperRepository;
     private final WarehouseItemRepository itemRepository;
     private final ProductRepository productRepository;
+    private final EmailServiceImpl emailService;
+
 
     public WarehouseService(WarehouseRepository warehouseRepository,
                             WarehouseKeeperRepository keeperRepository,
                             WarehouseItemRepository itemRepository,
-                            ProductRepository productRepository) {
+                            ProductRepository productRepository,
+                            EmailServiceImpl emailService) {
         this.warehouseRepository = warehouseRepository;
         this.keeperRepository = keeperRepository;
         this.itemRepository = itemRepository;
         this.productRepository = productRepository;
+        this.emailService = emailService;
     }
 
     public List<Warehouse> findAllWarehouses() {
@@ -94,7 +100,9 @@ public class WarehouseService {
                 warehouseRepository.getById(warehouseId),
                 shipmentItem.getProduct())
                 .orElseThrow ( () -> new EntityNotFoundException("Warehouse Item not found"));
-
+        if(shipmentItem.getAmount()>=10) {
+            sendingMessageWarehouseKeeper (warehouseRepository.getById(warehouseId).getWarehouseKeeper());
+        } else  sendingMessageWarehouseKeeperLessThan10 (warehouseRepository.getById(warehouseId).getWarehouseKeeper());
         item.setAmount(item.getAmount() - shipmentItem.getAmount());
         itemRepository.saveAndFlush(item);
         return true;
@@ -107,5 +115,23 @@ public class WarehouseService {
         if (shipmentItem.getAmount() <= 0) {
             throw new EntityNotFoundException("Product amount cannot be empty or negative");
         }
+    }
+
+    private void sendingMessageWarehouseKeeper (WarehouseKeeper keeper){
+       EmailMessage message = new EmailMessage(
+                keeper.getEmail()
+                ,"Shipment of goods"
+                , "The product has been shipped"
+        );
+        emailService.send(message);
+    }
+
+    private void sendingMessageWarehouseKeeperLessThan10 (WarehouseKeeper keeper){
+        EmailMessage message = new EmailMessage(
+                keeper.getEmail()
+                ,"Warning"
+                , "The number of shipped goods is less than 10"
+        );
+        emailService.send(message);
     }
 }

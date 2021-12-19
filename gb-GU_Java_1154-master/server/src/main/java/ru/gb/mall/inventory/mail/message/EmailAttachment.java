@@ -1,4 +1,4 @@
-package mail.message;
+package ru.gb.mall.inventory.mail.message;
 
 import java.io.InputStream;
 

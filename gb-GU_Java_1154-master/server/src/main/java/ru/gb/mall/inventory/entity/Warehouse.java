@@ -23,5 +23,4 @@ public class Warehouse {
 
     @OneToMany(mappedBy = "warehouse", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Collection<WarehouseItem> items = new ArrayList<>();
-
 }

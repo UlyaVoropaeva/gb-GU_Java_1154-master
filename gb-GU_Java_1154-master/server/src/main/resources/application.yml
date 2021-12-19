@@ -25,11 +25,17 @@ database:
   mail:
     host: smtp.google.com
     port: 587
-    username: <changeit>
-    password: <changeit>
+    username: Username@gmail.com
+    password: <password>
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
+
+    attachment:
+      invoice: path_to_file
+
+    templates:
+      path: mail-templates
