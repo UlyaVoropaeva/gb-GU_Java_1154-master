@@ -1,0 +1,37 @@
+server:
+  servlet:
+    context-path: /api/v1
+spring:
+  datasource:
+    username: root
+    password: 12345
+    url: jdbc:mysql://localhost:3306/MallInventory
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  data:
+    jpa:
+      repositories:
+        enabled: true
+database:
+  secret: B77=m7$BzwgrAxTb
+  mail:
+    host: smtp.google.com
+    port: 587
+    username: Username@gmail.com
+    password: <password>
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+    attachment:
+      invoice: path_to_file
+
+    templates:
+      path: mail-templates
